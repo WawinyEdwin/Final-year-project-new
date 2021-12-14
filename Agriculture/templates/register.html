@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+
+{% block custom_css %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename = 'assets/css/register_style.css' ) }} ">
+    
+    
+{% endblock %}
+
+
+{% block content %}
+
+<div class="register">
+    <h1>Register</h1>
+    <div class="text-center text-danger msg">{{ msg }}</div>
+    <div class="text-center text-success msg">{{ success }}</div>
+    <div class="links">
+        <a href="{{ url_for('login') }}">Login</a>
+        <a href="{{ url_for('register') }}" class="active">Register</a>
+    </div>
+    <form action="{{ url_for('register') }}" method="post" autocomplete="off">
+       <div>
+        <label for="username">User Name </label>
+        <input type="text" name="username" placeholder="Username" id="username" required>
+       </div>
+       <div>
+        <label for="national">ID NO 
+        </label>
+        <input type="text" name="national" placeholder="National id number" id="national" required>
+    </div>
+        <div>
+            <label for="password">Password
+            </label>
+            <input type="password" name="password" placeholder="Password" id="password" required>
+        </div>
+        <div>
+            <label  for="re-password">Re-Password : 
+            </label>
+            <input type="password" name="re-password" placeholder="Repeat Password" id="re-password" required>
+        </div>
+        <div>
+            <label for="email">Email
+            </label>
+            <input type="email" name="email" placeholder="Email" id="email" required>
+        </div>
+        
+        <input type="submit" value="Register">
+    </form>
+</div>
+
+{% endblock  %}

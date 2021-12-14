@@ -1,0 +1,105 @@
+
+
+{% extends 'recbase.html' %}
+{% block custom_css %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename = 'assets/css/farm.css' ) }} ">
+    
+    
+{% endblock %}
+
+{% block records %}
+
+<div class="farm">
+    
+    <h1>Crop Records</h1>
+    
+    <form action="{{ url_for('crops' ) }}" method="post">
+        <div>
+            <label for="crop">Crop ID : </label>
+            <input type="number" name="crop" id="crop" required>
+        
+        
+            <label for="cfarm">Farm ID:</label>
+
+            <select name="cfarm" id="cfarm" required>
+                {% for row in farm %}
+                     <option value="{{row['farmID']}}">{{row['farmID']}}</option>
+                {% endfor %}
+                
+               
+            </select>
+            
+        </div>
+        <div>
+            <label for="var">Variety : </label>
+            <select name="var" id="var" required>
+                <option value="seed">seed</option>
+                <option value="plant">plant</option>
+            </select>
+        
+        
+            <label for="cname" >Crop Name : </label>
+            <input type="text" name="cname" id="cname" required>
+            
+        </div>
+        <div>
+            <label for="pdate">Date Purchased : </label>
+            <input type="date" name="pdate" id="pdate" required>
+        
+        
+            <label for="pldate">Date Planted : </label>
+            <input type="date" name="pldate" id="pldate" required>
+            
+        </div>
+        <div>
+            <label for="farm">Date Harvested : </label>
+            <input type="date" name="hdate" id="hdate" required>
+        
+        
+            <label for="price">Price : </label>
+            <input type="number" name="price" id="price" required>
+            
+        </div>
+        <div class="sub">
+            <input type="submit" value="Add Farm Records" class="btn ">
+            <input type="button" value="Delete Farm Records" class="btn btn-outline-success">
+        </div>
+               
+    </form>
+    
+        <table>
+            <tr>
+              <th>Farm ID</th>
+              <th>Crop ID</th>
+              <th>Name</th>
+              <th>Variety</th>
+              <th>Date Purchased</th>
+              <th>Date Planted</th>
+              <th>Date Harvested</th>
+              <th>Price</th>
+             </tr>
+             {% for row in data %}
+             <tr>
+                <td>{{row["farmID"]}}</td>
+                <td>{{row["cropID"]}}</td>
+                <td>{{row["name"]}}</td>
+                <td>{{row["variety"]}}</td>
+                <td>{{row["date_purchased"]}}</td>
+                <td>{{row["planted_date"]}}</td>
+                <td>{{row["h_date"]}}</td>
+                <td>{{row["price"]}}</td>
+                
+              </tr>
+              
+             {% endfor %}
+            
+            
+          </table>
+    
+    
+</div>
+<script>alert(suc)</script>
+<script>alert(msg)</script>
+    
+{% endblock %}

@@ -1,0 +1,117 @@
+{% extends 'recbase.html' %}
+{% block custom_css %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename = 'assets/css/farm.css' ) }} ">
+    
+    
+{% endblock %}
+
+{% block records %}
+
+<div class="farm">
+  
+    <h1>Sales Records</h1>
+    <form action="">
+        <div>
+            <label for="cfarm">Farm ID:</label>
+
+            <select name="cfarm" id="cfarm" required>
+                {% for row in farm %}
+                     <option value="{{row['farmID']}}">{{row['farmID']}}</option>
+                {% endfor %}
+            </select>
+        
+        
+            <label for="cfarm">Crop:</label>
+
+            <select name="crop" id="cfarm" required>
+                {% for row in farm %}
+                     <option value="{{row['farmID']}}">{{row['farmID']}}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div>
+
+            <label for="market">Market : </label>
+            <input type="text" id="market" name="market">
+        
+        
+            <label for="measure">Measured In:</label>
+
+            <select name="measure" id="measure" required>
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+            </select>
+        </div>
+
+        <div>
+            <label for="mdate">Market Date : </label>
+            <input type="date" id="mdate" name="mdate">
+        
+        
+            <label for="tqty">Qty to Market : </label>
+            <input type="number" id="tqty" name="tqty">
+        </div>
+
+        <div>
+
+            <label for="sqty">Quantity Sold : </label>
+            <input type="number" id="sqty" name="sqty">
+        
+        
+            <label for="lqty">Quantity Leftover : </label>
+            <input type="number" id="lqty" name="lqty" value="0">
+        </div>
+        <div>
+            <label for="seeds">Price per Unit : </label>
+            <input type="number" id="seeds" name="seeds">
+        
+        
+        </div>
+    
+        <div class="sub">
+            <input type="submit" value="Add Expenses Records" class="btn ">
+            <input type="button" value="Delete Expenses Records" class="btn btn-outline-success">
+        </div>
+               
+    </form>
+    
+        <table>
+            <tr>
+                <th>Farm ID</th>
+                <th>Crop</th>
+                <th>Measure Units</th>
+                <th>Market Name</th>
+                <th>market Date</th>
+                <th>Quantity to Market</th>
+                <th>Quantity Sold</th>
+                <th>Quantity Leftover</th>
+                <th>Price Per Quantity</th>
+                <th>Total Price</th>
+                               
+               </tr>
+              <tr>
+                <td>121</td>
+                <td>400</td>
+                <td>free</td>
+                <td>121</td>
+                <td>400</td>
+                <td>free</td>
+                <td>121</td>
+                <td>400</td>
+                <td>free</td>
+                <td>121</td>
+              
+                
+              </tr>
+            
+            
+          </table>
+    
+    
+</div>
+    
+{% endblock %}

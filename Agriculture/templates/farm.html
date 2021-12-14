@@ -1,0 +1,50 @@
+{% extends 'recbase.html' %}
+{% block custom_css %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename = 'assets/css/farm.css' ) }} ">
+    
+    
+{% endblock %}
+
+{% block records %}
+
+<div class="farm">
+ 
+    <h1>Farm Records</h1>
+    <form action="{{ url_for('farms') }}" method="post">
+        <div>
+            <label for="farm">Farm ID : </label>
+            <input id="farm" name="farm" type="number">
+        
+        
+            <label for="fnum">Size : </label>
+            <input id="fnum" name="fnum" type="number">
+        </div>
+        <div class="sub">
+            <input type="submit" value="Add Farm Records" class="btn ">
+            <input type="button" value="Delete Farm Records" class="btn btn-outline-success">
+        </div>
+               
+    </form>
+    
+        <table>
+            <tr>
+              <th>Farm ID</th>
+              <th>Size(in ACCRES)</th>
+              <th>Status</th>
+             </tr>
+             {% for row in account %}
+             <tr>
+                <td>{{row['farmID']}}</td>
+                <td>{{row['size']}}</td>
+                <td>free</td>
+              </tr>
+               
+             {% endfor %} 
+            
+          </table>
+    
+    
+</div>
+    
+{% endblock %}
