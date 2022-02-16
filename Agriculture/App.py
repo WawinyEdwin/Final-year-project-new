@@ -1,9 +1,11 @@
 from flask import Flask,render_template, url_for, request,redirect,flash, session
 from werkzeug.security import generate_password_hash, check_password_hash
-from forms import RegistrationForm, LoginForm
+#from forms import RegistrationForm, LoginForm
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
 import re
+import config
+import requests
 
 app = Flask(__name__)
 
@@ -17,6 +19,29 @@ mysql = MySQL(app)
 
 msg = ""
 suc = ""
+
+# Obtaining weather
+def weather_fetch(city_name):
+    """
+    Fetch and returns the temperature and humidity of a city
+    :params: city_name
+    :return: temperature, humidity
+    """
+    api_key = config.weather_api_key
+    base_url = "http://api.openweathermap.org/data/2.5/weather?"
+
+    complete_url = base_url + "appid=" + api_key + "&q=" + city_name
+    response = requests.get(complete_url)
+    x = response.json()
+
+    if x["cod"] != "404":
+        y = x["main"]
+
+        temperature = round((y["temp"] - 273.15), 2)
+        humidity = y["humidity"]
+        return temperature, humidity
+    else:
+        return None
 #routing urls
 @app.route("/", methods = ['POST','GET'])
 def home():
@@ -84,7 +109,7 @@ def register():
             msg = 'Please fill out the form!'
         else:
             # Account doesnt exists and the form data is valid, now insert new account into accounts table
-            cursor.execute('INSERT INTO accounts VALUES (%s, %s, %s, %s,NULL)', (national,username, password, email,))
+            cursor.execute('INSERT INTO accounts VALUES (%s, %s, %s, %s)', (national,username, password, email))
             mysql.connection.commit()
             suc = 'You have successfully registered!'
     elif request.method == 'POST':
