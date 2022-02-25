@@ -249,9 +249,7 @@ def crops():
 def expenses():
     return render_template("expenses.html")
 
-@app.route("/sales")
-def sales():
-    return render_template("sales.html")
+
 
 @ app.route('/crop-recommend')
 def crop_recommend():
@@ -285,12 +283,13 @@ def crop_prediction():
 
             return render_template('try_again.html', title=title)
 
-@app.route('/admin')
-def admin():
-    return render_template('admin.html')
+
 @app.route('/admin/dashboard')
 def dashboard():
     return render_template('dashboard.html')
+@app.route("/admin/sales")
+def sales():
+    return render_template("sales.html")
 
 
 

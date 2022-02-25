@@ -1,11 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Mazer Admin Dashboard</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="shortcut icon" href="images/favicon.png" type="image/png" />
+    <title>POULTRY MANAGEMENT SYSTEM</title>
     
+    <link
+      href="{{url_for('static',filename='assets/vendor/fontawesome-free/css/fontawesome.min.css')}}"
+      rel="stylesheet"
+    />
+    <link
+      href="{{url_for('static',filename='assets/vendor/css/bootstrap-timepicker.min.css')}}"
+      rel="stylesheet"
+    />
+    <link
+      href="{{url_for('static',filename='assets/vendor/css/jquery.tagsinput.css')}}"
+      rel="stylesheet"
+    />
+    <link
+      href="{{url_for('static',filename='assets/vendor/css/colorpicker.css')}}"
+      rel="stylesheet"
+    />
+   
+    <link
+      href="{{url_for('static',filename='assets/vendor/css/dropzone.css')}}"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+    <link
+      href="{{url_for('static',filename='assets/vendor/css/bootstrap.min.css')}}"
+      rel="stylesheet"
+    />
+    <link
+      href="{{url_for('static',filename='assets/vendor/css/weather-icons.min.css')}}"
+      rel="stylesheet"
+    />
+    <link
+      href="{{url_for('static',filename='assets/vendor/css/font-awesome.min.css')}}"
+      rel="stylesheet"
+    />
+    <link
+      href="{{url_for('static',filename='assets/vendor/css/animate.min.css')}}"
+      rel="stylesheet"
+    />
+    <link
+      href="{{url_for('static',filename='assets/vendor/css/animate.delay.css')}}"
+      rel="stylesheet"
+    />
+    <link
+      href="{{url_for('static',filename='assets/vendor/css/toggles.css')}}"
+      rel="stylesheet"
+    />
+    <link
+      href="{{url_for('static',filename='assets/vendor/css/select2.css')}}"
+      rel="stylesheet"
+    />
+    <link
+      href="{{url_for('static',filename='assets/vendor/css/style.default.css')}}"
+      rel="stylesheet"
+    />
+    <link
+      href="{{url_for('static',filename='assets/vendor/css/lato.css')}}"
+      rel="stylesheet"
+    />
+    <link
+      href="{{url_for('static',filename='assets/vendor/css/roboto.css')}}"
+      rel="stylesheet"
+    />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{url_for('static',filename = 'assets/css/bootstrap.css')}}">
@@ -18,277 +85,431 @@
     <link rel="stylesheet" href="{{url_for('static', filename='assets/css/app.css')}}">
     <link href="{{url_for('static', filename='assets/img/fav.jpg')}}" rel="icon">
     <link href="{{url_for('static', filename='assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
-    <link href="css/style.default.css" rel="stylesheet"> 
+   
+    
+        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <script src="{{url_for('static',filename='assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{url_for('static',filename='assets/vendor/js/jquery-1.11.1.min.js')}}"></script>
+    <script src="{{url_for('static',filename='assets/vendor/js/jquery-migrate-1.2.1.min.js')}}"></script>
+    <script src="{{url_for('static',filename='assets/vendor/js/jquery-ui-1.10.3.min.js')}}"></script>
+    <script src="{{url_for('static',filename='assets/vendor/bootstrap.min.js')}}"></script>
+    <script src="{{url_for('static',filename='assets/vendor/js/modernizr.min.js')}}"></script>
+    <script src="{{url_for('static',filename='assets/vendor/js/jquery.sparkline.min.js')}}"></script>
+    <script src="{{url_for('static',filename='assets/vendor/js/toggles.min.js')}}"></script>
+    <script src="{{url_for('static',filename='assets/vendor/js/retina.min.js')}}"></script>
+    <script src="{{url_for('static',filename='assets/vendor/js/jquery.sparkline.min.js')}}"></script>
+    <script
+      type="text/javascript"
+      src="{{url_for('static',filename='assets/vendor/js/Chart.js')}}"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{{url_for('static',filename='assets/vendor/js/js/Chart.min.js')}}"
+    ></script>
 
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <script>
+      $(function () {
+        $("#datepicker").datepicker();
+      });
+    </script>
+    <script>
+      $(function () {
+        $("#datepicker1").datepicker();
+      });
+    </script>
+    <script>
+      $(function () {
+        $("#datepicker2").datepicker();
+      });
+    </script>
+    <style>
+      .page-header {
+        border-bottom: 0px solid #fff;
+        color: #1d2939;
+      }
+      h1 {
+        text-transform: uppercase;
+      }
+      .aside {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 8976;
+  top: 0;
+  left: 0;
+ 
+  overflow-x: hidden;
+  transition: 0.5s;
+  
+}
 
- <link rel="stylesheet" href="css/bootstrap-timepicker.min.css" />
-  <link rel="stylesheet" href="css/jquery.tagsinput.css" />
-  <link rel="stylesheet" href="css/colorpicker.css" />
-  <link rel="stylesheet" href="css/dropzone.css" />
-  <script src="js/jquery-1.11.1.min.js"></script>
-<script src="js/jquery-migrate-1.2.1.min.js"></script>
-<script src="js/jquery-ui-1.10.3.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/modernizr.min.js"></script>
-<script src="js/jquery.sparkline.min.js"></script>
-<script src="js/toggles.min.js"></script>
-<script src="js/retina.min.js"></script>
-<script src="js/jquery.cookies.js"></script>
-<!------------------------Chat JS Files ------------------------------------------------------>
-<script type="text/javascript" src="js/Chart.js"></script>
-<script type="text/javascript" src="js/Chart.min.js"></script>
-</head>
+.aside .tog {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  
+  display: block;
+  transition: 0.3s;
+}
 
-<body>
-    <div id="app">
-    <div id="sidebar" class="active" style="color:white;">
-    <div class="sidebar-wrapper active bg-success">
-    <div class="sidebar-header">
-        <div class="d-flex justify-content-between">
-            <div class="logo">
-                <a href="index.html"><img src="assets/images/logo/logo.png" alt="Logo" srcset=""></a>
-            </div>
-            <div class="toggler">
-                <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
-            </div>
+.aside .tog:hover {
+  color: #f1f1f1;
+}
+
+.aside .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .aside {padding-top: 15px;}
+  .aside a {font-size: 18px;}
+}
+@media screen and (max-width: 767px) {
+  .main-sidebar,.main-sidebar::before {margin-left:0px;}
+  
+}
+    </style>
+  </head>
+  <body>
+    
+<section>
+
+  <div  class="leftpanel main-sidebar aside" id="mySidebar">
+
+    <div class="logopanel">
+        <h1>POULTRY SOFTWARE</h1>
+    </div><!-- logopanel -->
+    <a href="javascript:void(0)" class="closebtn " onclick="closeNav()">×</a>
+
+    <div class="leftpanelinner sidebar" id="sidebar" class="" >
+
+        <!-- This is only visible to small devices -->
+        <div class="visible-xs hidden-sm hidden-md hidden-lg">
+
+            <h5 class="sidebarbreed_type acbreed_type">Account</h5>
+            <ul class="nav nav-pills nav-stacked nav-bracket mb30">
+              <li><a href="changepass.php"><i class="fa fa-cog"></i> <span>Account Settings</span></a></li>
+              <li><a href="signout.php"><i class="fa fa-sign-out"></i> <span>Sign Out</span></a></li>
+            </ul>
         </div>
-    </div>
-    <div class="sidebar-menu">
-        <ul class="menu">
-            <li class="sidebar-title">Menu</li>
-            
-            <li
-                class="sidebar-item active ">
-                <a href="index.html" class='sidebar-link'>
-                    <i class="bi bi-grid-fill"></i>
-                    <span>Dashboard</span>
-                </a>
-            </li>
-            
-            <li
-                class="sidebar-item  has-sub">
-                <a href="#" class='sidebar-link'>
-                    <i class="bi bi-stack"></i>
-                    <span>Sales</span>
-                </a>
-                <ul class="submenu ">
-                    <li class="submenu-item ">
-                        <a href="extra-component-avatar.html">Crop Sales Report</a>
+
+      <h5 class="sidebartitle">Navigation</h5>
+      <ul class="nav nav-pills nav-stacked nav-bracket" style="background-color:#198754;" style="flex-direction;">
+	  
+	  
+	   
+	  
+        <li ><a href="home.php"><i class="fa fa-window-close" aria-hidden="true"></i>
+<span>Dashboard</span></a></li>
+        <li><a href="calendar/"><i class="fi fi-rr-home"></i> <span>Calendar</span></a></li>
+    	<li class="nav-parent mult"><a  class="level" href="#"><i class="fa fa-cog"></i> <span> Sales</a>
+			<ul class="children">
+				<li class="">
+                        <a href="{{ url_for('sales' ) }}">Crop Sales Report</a>
                     </li>
-                    <li class="submenu-item ">
-                        <a href="extra-component-sweetalert.html">Poultry Sales Report</a>
+                    <li  >
+                        <a href="{{ url_for('sales' ) }}">Poultry Sales Report</a>
                     </li>
-                    <li class="submenu-item ">
-                        <a href="extra-component-toastify.html">Dairy Farm Sales Report</a>
+                    <li >
+                        <a href="{{ url_for('sales' ) }}">Dairy Farm Sales Report</a>
                         
                     </li>
-                    
-                </ul>
-                
-            </li>
-            
-            <li
-                class="sidebar-item  has-sub">
-                <a href="#" class='sidebar-link'>
-                    <i class="bi bi-collection-fill"></i>
-                    <span>Records</span>
-                </a>
-                <ul class="submenu ">
-                    <li class="submenu-item ">
-                        <a href="extra-component-avatar.html">Farm Records</a>
+			</ul>
+        </li>
+		
+        
+        <li class="nav-parent mult"><a class="level" href="#"><i class="fa fa-cog"></i> <span> Records</span></a>
+			<ul class="children">
+            <li class="">
+                        <a href="{{ url_for('sales' ) }}">farm Records</a>
                     </li>
-                    <li class="submenu-item ">
-                        <a href="extra-component-sweetalert.html">Crop Records</a>
+				<li class="">
+                        <a href="{{ url_for('sales' ) }}">Crop Records</a>
                     </li>
-                    <li class="submenu-item ">
-                        <a href="extra-component-toastify.html">Poultry Records</a>
+                    <li  >
+                        <a href="{{ url_for('sales' ) }}">Poultry Records</a>
                     </li>
-                    <li class="submenu-item ">
-                        <a href="extra-component-rating.html">Dairy Production Records</a>
+                    <li >
+                        <a href="{{ url_for('sales' ) }}">Dairy Records</a>
+                        
                     </li>
-                    
-                </ul>
-            </li>
-             <li
-                class="sidebar-item  has-sub">
-                <a href="#" class='sidebar-link'>
-                    <i class="bi bi-collection-fill"></i>
-                    <span>Expenses Management</span>
-                </a>
-                <ul class="submenu ">
-                    <li class="submenu-item ">
-                        <a href="extra-component-avatar.html">Farm Expenses</a>
+			</ul>
+        </li>
+        <li class="nav-parent mult"><a class = "level" href="#"><i class="fa fa-cog"></i> <span>Expense Management</span></a>
+			<ul class="children">
+            <li class="">
+                        <a href="{{ url_for('sales' ) }}">Farm Expenses Management</a>
                     </li>
-                    <li class="submenu-item ">
-                        <a href="extra-component-sweetalert.html">Crop Expenses Management</a>
+				<li class="">
+                        <a href="{{ url_for('sales' ) }}">Crop Expenses Management</a>
                     </li>
-                    <li class="submenu-item ">
-                        <a href="extra-component-toastify.html">Poultry Expenses Management</a>
+                    <li  >
+                        <a href="{{ url_for('sales' ) }}">Poultry Expenses Management</a>
                     </li>
-                    <li class="submenu-item ">
-                        <a href="extra-component-rating.html">Dairy Expenses Management</a>
+                    <li >
+                        <a href="{{ url_for('sales' ) }}">Dairy Expenses Management</a>
+                        
                     </li>
-                    
-                </ul>
-            </li>
-             <li
-                class="sidebar-item  has-sub">
-                <a href="#" class='sidebar-link'>
-                    <i class="bi bi-collection-fill"></i>
-                    <span>Income Management</span>
-                </a>
-                <ul class="submenu ">
-                    <li class="submenu-item ">
-                        <a href="extra-component-avatar.html">Farm Income Management</a>
+			</ul>
+        </li>
+        <li class="nav-parent mult"><a  class="level"   href="#"><i class="fa fa-cog"></i> <span> Income Management</span></a>
+			<ul class="children">
+            <li class="">
+                        <a href="{{ url_for('sales' ) }}">Farm Income Management</a>
                     </li>
-                    <li class="submenu-item ">
-                        <a href="extra-component-sweetalert.html">Crop Income Management</a>
+				<li class="">
+                        <a href="{{ url_for('sales' ) }}">Crop Income Management</a>
                     </li>
-                    <li class="submenu-item ">
-                        <a href="extra-component-toastify.html">Poultry Income Management</a>
+                    <li  >
+                        <a href="{{ url_for('sales' ) }}">Poultry Income Management</a>
                     </li>
-                    <li class="submenu-item ">
-                        <a href="extra-component-rating.html">Dairy Income Management</a>
+                    <li >
+                        <a href="{{ url_for('sales' ) }}">Dairy Income Management</a>
+                        
                     </li>
-                    
-                </ul>
-            </li>
-            
-            
-            
-            <li class="sidebar-title">Pages</li>
-            
-            <li
-                class="sidebar-item  ">
-                <a href="application-email.html" class='sidebar-link'>
-                    <i class="bi bi-envelope-fill"></i>
-                    <span>Email Application</span>
-                </a>
-            </li>
-            
-            <li
-                class="sidebar-item  ">
-                <a href="application-chat.html" class='sidebar-link'>
-                    <i class="bi bi-chat-dots-fill"></i>
-                    <span>Chat Application</span>
-                </a>
-            </li>
-            
-            <li
-                class="sidebar-item  ">
-                <a href="application-gallery.html" class='sidebar-link'>
-                    <i class="bi bi-image-fill"></i>
-                    <span>Photo Gallery</span>
-                </a>
-            </li>
-            
-            <li
-                class="sidebar-item  ">
-                <a href="application-checkout.html" class='sidebar-link'>
-                    <i class="bi bi-basket-fill"></i>
-                    <span>Checkout Page</span>
-                </a>
-            </li>
-            
-            <li
-                class="sidebar-item  has-sub">
-                <a href="#" class='sidebar-link'>
-                    <i class="bi bi-person-badge-fill"></i>
-                    <span>Authentication</span>
-                </a>
-                <ul class="submenu ">
-                    <li class="submenu-item ">
-                        <a href="auth-login.html">Login</a>
-                    </li>
-                    <li class="submenu-item ">
-                        <a href="auth-register.html">Register</a>
-                    </li>
-                    <li class="submenu-item ">
-                        <a href="auth-forgot-password.html">Forgot Password</a>
-                    </li>
-                </ul>
-            </li>
-            
-            <li
-                class="sidebar-item  has-sub">
-                <a href="#" class='sidebar-link'>
-                    <i class="bi bi-x-octagon-fill"></i>
-                    <span>Errors</span>
-                </a>
-                <ul class="submenu ">
-                    <li class="submenu-item ">
-                        <a href="error-403.html">403</a>
-                    </li>
-                    <li class="submenu-item ">
-                        <a href="error-404.html">404</a>
-                    </li>
-                    <li class="submenu-item ">
-                        <a href="error-500.html">500</a>
-                    </li>
-                </ul>
-            </li>
-            
-            <li class="sidebar-title">Raise Support</li>
-            
-            <li
-                class="sidebar-item  ">
-                <a href="https://zuramai.github.io/mazer/docs" class='sidebar-link'>
-                    <i class="bi bi-life-preserver"></i>
-                    <span>Documentation</span>
-                </a>
-            </li>
-            
-            <li
-                class="sidebar-item  ">
-                <a href="https://github.com/zuramai/mazer/blob/main/CONTRIBUTING.md" class='sidebar-link'>
-                    <i class="bi bi-puzzle"></i>
-                    <span>Contribute</span>
-                </a>
-            </li>
-            
-            <li
-                class="sidebar-item  ">
-                <a href="https://github.com/zuramai/mazer#donate" class='sidebar-link'>
-                    <i class="bi bi-cash"></i>
-                    <span>Donate</span>
-                </a>
-            </li>
-            
+			</ul>
+        </li>
+        <li class="nav-parent mult"><a class="level" href="#"><i class="fa fa-cog"></i> <span> FARM SETTINGS</a>
+			<ul class="children">
+				<li><a href="feed_typeview.php"><i class="fa fa-paw"></i>Feed Type</a></li>
+				<li><a href="breed_typeview.php"><i class="fa fa-paw"></i>Breed Type</a></li>
+				<li><a href="batch_noview.php"><i class="fa fa-paw"></i>Batch No</a></li>
+				<li><a href="vaccine_medicationview.php"><i class="fa fa-paw"></i>Vaccination Program</a></li>
+			</ul>
+        </li>
+		
+        <li class="nav-parent"><a href="#"><i class="fa fa-th-list"></i> <span>Staff Management</span></a>
+          <ul class="children">
+            <li><a href="staffadd.php"><i class="fa fa-caret-right"></i>Add Staff</a></li>
+            <li><a href="staffview.php"><i class="fa fa-caret-right"></i>View/Edit Staff</a></li>
+            <li><a href="paysalary.php"><i class="fa fa-caret-right"></i> Pay Salary</a></li>
+            <li><a href="paybonus.php"><i class="fa fa-caret-right"></i> Pay Bonus</a></li>
+            <li><a href="staffcatadd.php"><i class="fa fa-caret-right"></i>Add Designation</a></li>
+            <li><a href="staffcatview.php"><i class="fa fa-caret-right"></i>View/Edit Designations</a></li>
+          </ul>
+        </li>
+        <li><a href="customerview.php"><i class="fa fa-user"></i><span>Customer</span></a></li>
+		<li><a href="batch_flockview.php"><i class="fa fa-paw"></i><span>Batch Flock Records</span></a></li>
+        <li><a href="egg_productionlist.php"><i class="fa fa-paw"></i><span>Egg Production Records</span></a></li>
+		<li><a href="hatcherylist.php"><i class="fa fa-paw"></i><span>Hatchery Records</span></a></li>
+		<li><a href="vaccination_medication_programlist.php"><i class="fa fa-paw"></i><span>Vaccination Records</span></a></li>
+		
+        <li><a href="smslist.php"><i class="fa fa-envelope-o"></i><span>SENT MESSAGES</span></a></li>
+        
+		
+		
+        <li class="nav-parent"><a href="#"><i class="fa fa-cog"></i> <span> General Setting</span></a>
+          <ul class="children">
+            <li><a href="setgeneral.php"><i class="fa fa-caret-right"></i> Setting</a></li>
+            <li><a href="setlogo.php"><i class="fa fa-caret-right"></i> LOGO</a></li>
+            <li><a href="document.php"><i class="fa fa-caret-right"></i> Office Documents</a></li>
+			<li><a href="templateadd.php"><i class="fa fa-caret-right"></i>Add SMS Template</a></li>
+            <li><a href="templateview.php"><i class="fa fa-caret-right"></i>View/Edit SMS Template</a></li>
+
+          </ul>
+        </li>
+		
+      </ul>
+
+      
+
+    </div><!-- leftpanelinner -->
+  </div><!-- leftpanel -->
+
+  <div class="mainpanel" id="main" style="margin-left:0px;">
+
+    <div class="headerbar">
+
+      <button class="openbtn" onclick="openNav()">☰</button> 
+
+        
+      <div class="header-right">
+        <ul class="headermenu">
+          <li>
+            <div class="btn-group">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+
+<img src="images/user.png" alt="" /> admin                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+              <li><a href="changepass.php"><i class="fa fa-cog"></i> <span>Account Settings</span></a></li>
+              <li><a href="signout.php"><i class="fa fa-sign-out"></i> <span>Sign Out</span></a></li>
+              </ul>
+            </div>
+          </li>
+
         </ul>
-    </div>
-    <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
-</div>
-</div>
+      </div><!-- header-right -->
 
-<div id="main">
+    </div><!-- headerbar -->
 
-{% block content %}
-  
+
+    <div class="contentpanel" style="background-color:#f2f7ff;">
+
     
-{% endblock %}
-    
-</div>
 
-            <footer>
-                <div class="footer clearfix mb-0 text-muted">
-                    <div class="float-start">
-                        <p>2021 &copy; Mazer</p>
-                    </div>
-                    <div class="float-end">
-                        <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
-                                href="http://ahmadsaugi.com">A. Saugi</a></p>
-                    </div>
-                </div>
-            </footer>
+        <div id="page-wrapper">
+        {% block content %}
+
+  {% endblock %}
         </div>
+            
     </div>
-    <script src="{{url_for('static', filename = 'assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
-    <script src="{{url_for('static', filename='assets/js/bootstrap.bundle.min.js')}}"></script>
+    <!-- /#wrapper --> 
+
+
+
+
+
+
+<script src="{{url_for('static',filename='assets/vendor/js/jquery.autogrow-textarea.js')}}"></script>
+<script src="{{url_for('static',filename='assets/vendor/js/bootstrap-timepicker.min.js')}}"></script>
+<script src="{{url_for('static',filename='assets/vendor/js/jquery.maskedinput.min.js')}}"></script>
+<script src="{{url_for('static',filename='assets/vendor/js/jquery.mousewheel.js')}}"></script>
+<script src="{{url_for('static',filename='assets/vendor/js/jquery.tagsinput.min.js')}}"></script>
+<script src="{{url_for('static',filename='assets/vendor/js/select2.min.js')}}"></script>
+<script src="{{url_for('static',filename='assets/vendor/js/dropzone.min.js')}}"></script>
+<script src="{{url_for('static',filename='assets/vendor/js/colorpicker.js')}}"></script>
+<script src="{{url_for('static',filename='assets/vendor/js/custom.js')}}"></script>
+
+<script src="js/jquery.autogrow-textarea.js"></script>
+<script src="js/bootstrap-timepicker.min.js"></script>
+<script src="js/jquery.maskedinput.min.js"></script>
+<script src="js/jquery.tagsinput.min.js"></script>
+<script src="js/jquery.mousewheel.js"></script>
+<script src="js/select2.min.js"></script>
+<script src="js/dropzone.min.js"></script>
+<script src="js/colorpicker.js"></script>
+
+
+
+<script src="js/custom.js"></script>
+
+<script>
+jQuery(document).ready(function(){
+    
+    "use strict";
+  
+  // Tags Input
+  jQuery('#tags').tagsInput({width:'auto'});
+  
+  // Select2
+  jQuery(".select2").select2({
+    width: '100%'
+  });
+   
+  // Textarea Autogrow
+  jQuery('#autoResizeTA').autogrow();
+  
+  // Color Picker
+  if(jQuery('#colorpicker').length > 0) {
+	 jQuery('#colorSelector').ColorPicker({
+			onShow: function (colpkr) {
+				jQuery(colpkr).fadeIn(500);
+				return false;
+			},
+			onHide: function (colpkr) {
+				jQuery(colpkr).fadeOut(500);
+				return false;
+			},
+			onChange: function (hsb, hex, rgb) {
+				jQuery('#colorSelector span').css('backgroundColor', '#' + hex);
+				jQuery('#colorpicker').val('#'+hex);
+			}
+	 });
+  }
+  
+  // Color Picker Flat Mode
+	jQuery('#colorpickerholder').ColorPicker({
+		flat: true,
+		onChange: function (hsb, hex, rgb) {
+			jQuery('#colorpicker3').val('#'+hex);
+		}
+	});
+   
+  // Date Picker
+  jQuery('#datepicker').datepicker();
+  
+  jQuery('#datepicker-inline').datepicker();
+  
+  jQuery('#datepicker-multiple').datepicker({
+    numberOfMonths: 3,
+    showButtonPanel: true
+  });
+  
+  // Spinner
+  var spinner = jQuery('#spinner').spinner();
+  spinner.spinner('value', 0);
+  
+  // Input Masks
+  jQuery("#date").mask("99/99/9999");
+  jQuery("#phone").mask("(999) 999-9999");
+  jQuery("#ssn").mask("999-99-9999");
+  
+  // Time Picker
+  jQuery('#timepicker').timepicker({defaultTIme: false});
+  jQuery('#timepicker2').timepicker({showMeridian: false});
+  jQuery('#timepicker3').timepicker({minuteStep: 15});
+
+  
+});
+</script>
+
+
+<script src="{{url_for('static', filename = 'assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
+<script src="{{url_for('static', filename='assets/js/bootstrap.bundle.min.js')}}"></script>
     
 <script src="{{url_for('static', filename='assets/vendors/apexcharts/apexcharts.js')}}"></script>
 <script src="{{url_for('static', filename='assets/js/pages/dashboard.js')}}"></script>
 
-    <script src="{{url_for('static', filename='assets/js/mazer.js')}}"></script>
-</body>
+<script src="{{url_for('static', filename='assets/js/mazer.js')}}"></script>
 
+
+
+
+<script type="text/javascript" src="js/jquery.activeNavigation.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+    	$(document).activeNavigation(".nav")
+	});	
+  function openNav() {
+  document.getElementById("mySidebar").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+  
+}
+
+function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+}
+	</script>
+  </body>
 </html>
