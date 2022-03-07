@@ -1,0 +1,112 @@
+{% extends 'admin.html' %}
+
+
+{% block content %}
+
+<div id="page-wrapper">
+   <div class="row">
+      <div class="col-lg-12">
+         <h1 class="page-header">View Orders</h1>
+      </div>
+      <div><a href="orderadd.php" class="btn btn-lg btn-success" style='width:150px; float:right; margin:10px;'>Add Sales</a></div>
+      <!-- /.col-lg-12 -->
+   </div>
+   <!-- /.row -->
+   <div class="panel panel-default">
+      <div class="panel-body">
+         <div class="clearfix mb30"></div>
+         <div class="table-responsive">
+            <table class="table table-striped" id="table2">
+               <thead>
+                  <tr>
+                     <th>Order #</th>
+                     <th>Customer</th>
+                     <th>Description</th>
+                     <th>Farm</th>
+                     <th>Date Received</th>
+                     <th>Amount</th>
+                     <th>Balance</th>
+                     <th>Action</th>
+
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>15</td>
+                     <td></td>
+                     <td>Large eggs </td>
+                     <td>2021-12-30</td>
+                     <td>NGN 10000.00</td>
+                     <td>NGN 500.00</td>
+                     <td>
+                        <a href="printinvoice.php?id=15" class="btn btn-success btn-xs">Receipt</a>
+                        <a href="orderedit.php?id=15" class="btn btn-info btn-xs">Update</a>
+                        <a href="orderlist.php?id=15"><button type="button" class="btn btn-danger btn-xs">DELETE</button></a>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>14</td>
+                     <td>Ovie Wisky</td>
+                     <td>asdsds</td>
+                     <td>2019-12-12</td>
+                     <td>NGN 2000.00</td>
+                     <td>NGN 1200.00</td>
+                     <td>
+                        <a href="printinvoice.php?id=14" class="btn btn-success btn-xs">Receipt</a>
+                        <a href="orderedit.php?id=14" class="btn btn-info btn-xs">Update</a>
+                        <a href="orderlist.php?id=14"><button type="button" class="btn btn-danger btn-xs">DELETE</button></a>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>13</td>
+                     <td>Ovie Wisky</td>
+                     <td>tet</td>
+                     <td>2019-11-01</td>
+                     <td>NGN 100.00</td>
+                     <td>NGN 100.00</td>
+                     <td>
+                        <a href="printinvoice.php?id=13" class="btn btn-success btn-xs">Receipt</a>
+                        <a href="orderedit.php?id=13" class="btn btn-info btn-xs">Update</a>
+                        <a href="orderlist.php?id=13"><button type="button" class="btn btn-danger btn-xs">DELETE</button></a>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>12</td>
+                     <td>LAL BHADUR HARIJAN</td>
+                     <td></td>
+                     <td>2019-10-02</td>
+                     <td>NGN 5000.00</td>
+                     <td>NGN 0.00</td>
+                     <td>
+                        <a href="printinvoice.php?id=12" class="btn btn-success btn-xs">Receipt</a>
+                        <a href="orderedit.php?id=12" class="btn btn-info btn-xs">Update</a>
+                        <a href="orderlist.php?id=12"><button type="button" class="btn btn-danger btn-xs">DELETE</button></a>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>11</td>
+                     <td></td>
+                     <td>eggs small size</td>
+                     <td>2019-07-20</td>
+                     <td>NGN 4200.00</td>
+                     <td>NGN 0.00</td>
+                     <td>
+                        <a href="printinvoice.php?id=11" class="btn btn-success btn-xs">Receipt</a>
+                        <a href="orderedit.php?id=11" class="btn btn-info btn-xs">Update</a>
+                        <a href="orderlist.php?id=11"><button type="button" class="btn btn-danger btn-xs">DELETE</button></a>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+         <!-- table-responsive -->
+      </div>
+   </div>
+</div>
+<!-- contentpanel -->
+</div>
+<!-- /#page-wrapper -->
+
+<!-- /#wrapper -->
+    
+{% endblock %}

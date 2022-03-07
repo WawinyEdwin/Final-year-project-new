@@ -1,4 +1,4 @@
-from flask import Flask,render_template, url_for, request,redirect,flash, session
+from flask import Flask, render_template, url_for, request, redirect, flash, session
 from werkzeug.security import generate_password_hash, check_password_hash
 #from forms import RegistrationForm, LoginForm
 from flask_mysqldb import MySQL
@@ -28,6 +28,8 @@ crop_recommendation_model = pickle.load(
     open(crop_recommendation_model_path, 'rb'))
 
 # Obtaining weather
+
+
 def weather_fetch(city_name):
     """
     Fetch and returns the temperature and humidity of a city
@@ -49,13 +51,20 @@ def weather_fetch(city_name):
         return temperature, humidity
     else:
         return None
-#routing urls
-@app.route("/", methods = ['POST','GET'])
+# routing urls
+def user():
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute(
+            'SELECT * FROM user WHERE id = %s', (session['id'],))
+        account = cursor.fetchone()
+        return account
+
+@app.route("/", methods=['POST', 'GET'])
 def home():
-   
-   
-   
-   return render_template("home.html")
+    if 'loggedin' in session:
+        
+        return render_template("home.html", account=user())
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -68,16 +77,18 @@ def login():
         password = request.form['password']
         # Check if account exists using MySQL
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-        cursor.execute('SELECT * FROM accounts WHERE username = %s', (username,))
+        cursor.execute(
+            'SELECT * FROM user WHERE username = %s', (username,))
         # Fetch one record and return result
         account = cursor.fetchone()
-        # If account exists in accounts table in out database
-       
-        if check_password_hash(account['password'],password):
+        # If account exists in accounts table in out databasecheck_password_hash(account['password_hash'], password):
+
+        if account['password_hash'] == password:
             # Create session data, we can access this data in other routes
             session['loggedin'] = True
-            session['id'] = account['nat_id']
+            session['id'] = account['id']
             session['username'] = account['username']
+            session['role'] = account['role_id']
             # Redirect to home page
             return redirect(url_for('home'))
         else:
@@ -85,6 +96,8 @@ def login():
             msg = 'Incorrect username/password!'
     # Show the login form with message (if any)
     return render_template('login.html', msg=msg)
+
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     # Output message if something goes wrong...
@@ -94,14 +107,15 @@ def register():
     if request.method == 'POST' and 'national' in request.form and 'username' in request.form and 'password' in request.form and 'email' in request.form:
         # Create variables for easy access
         username = request.form['username']
-        password = generate_password_hash(request.form['password']) 
+        password = generate_password_hash(request.form['password'])
         email = request.form['email']
         national = request.form['national']
-        re_password =request.form['re-password']
+        re_password = request.form['re-password']
 
-         # Check if account exists using MySQL
+        # Check if account exists using MySQL
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-        cursor.execute('SELECT * FROM accounts WHERE username = %s', (username,))
+        cursor.execute(
+            'SELECT * FROM accounts WHERE username = %s', (username,))
         account = cursor.fetchone()
         # If account exists show error and validation checks
         if account:
@@ -116,47 +130,50 @@ def register():
             msg = 'Please fill out the form!'
         else:
             # Account doesnt exists and the form data is valid, now insert new account into accounts table
-            cursor.execute('INSERT INTO accounts VALUES (%s, %s, %s, %s)', (national,username, password, email))
+            cursor.execute('INSERT INTO accounts VALUES (%s, %s, %s, %s)',
+                           (national, username, password, email))
             mysql.connection.commit()
             suc = 'You have successfully registered!'
     elif request.method == 'POST':
         # Form is empty... (no POST data)
         msg = 'Please fill out the form!'
     # Show registration form with message (if any)
-    return render_template('register.html', msg=msg, success = suc)
+    return render_template('register.html', msg=msg, success=suc)
 
 
 @app.route('/logout')
 def logout():
     # Remove session data, this will log the user out
-   session.pop('loggedin', None)
-   session.pop('id', None)
-   session.pop('username', None)
-   # Redirect to login page
-   return redirect(url_for('login'))
+    session.pop('loggedin', None)
+    session.pop('id', None)
+    session.pop('username', None)
+    # Redirect to login page
+    return redirect(url_for('login'))
 
 
 @app.route('/profile')
 def profile():
     # Check if user is loggedin
-    
+
     if 'loggedin' in session:
         # We need all the account info for the user so we can display it on the profile page
-        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-        cursor.execute('SELECT * FROM accounts WHERE nat_id = %s', (session['id'],))
-        account = cursor.fetchone()
+        
+        
         # Show the profile page with account info
-        return render_template('profile.html', account=account)
+        return render_template('profile.html', account=user())
     # User is not loggedin redirect to login page
     return redirect(url_for('login'))
 
+
 @app.route("/covid")
 def covid():
-     return render_template("covid.html")
+    return render_template("covid.html")
+
 
 @app.route("/records")
 def records():
     return render_template("records.html")
+
 
 @app.route("/farms",  methods=['GET', 'POST'])
 def farms():
@@ -168,13 +185,13 @@ def farms():
         cursor.execute('SELECT * FROM farm WHERE name = %s', (session['id'],))
         farms = cursor.fetchall()
         # Show the profile page with account info
-        
 
-        ## Addding new records
+        # Addding new records
         if request.method == 'POST' and 'farm' in request.form and 'fnum' in request.form:
             farmid = request.form['farm']
             size = request.form["fnum"]
             user = session['id']
+            
 
             # Check if farm already exists
             cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
@@ -185,34 +202,35 @@ def farms():
                 msg = "Farm id already exists, try another one"
             else:
                 # Farm ID doesnt exists and the form data is valid, now insert new farm records into farm table
-                cursor.execute('INSERT INTO farm VALUES (%s, %s, %s)', (farmid,size,user ))
+                cursor.execute(
+                    'INSERT INTO farm VALUES (%s, %s, %s)', (farmid, size, user))
                 mysql.connection.commit()
                 suc = 'You have successfully registered!'
 
+        return render_template('farm.html', account=farms, msg=msg, suc=suc)
 
-        return render_template('farm.html', account=farms, msg = msg, suc = suc)
-    
     # User is not loggedin redirect to login page
     return redirect(url_for('login'))
-    
-@app.route("/crops", methods = ["POST","GET"])
+
+
+@app.route("/crops", methods=["POST", "GET"])
 def crops():
     msg = ' '
     suc = ' '
     if 'loggedin' in session:
         # We need all the account info for the user so we can display it on the profile page
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-        cursor.execute('SELECT farmID FROM farm WHERE name = %s', (session['id'],))
+        cursor.execute(
+            'SELECT farmID FROM farm WHERE name = %s', (session['id'],))
         farms = cursor.fetchall()
         # Show the profile page with account info
 
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-        cursor.execute('SELECT * FROM crop c  INNER JOIN farm f ON c.farmID = f.farmID')
+        cursor.execute(
+            'SELECT * FROM crop c  INNER JOIN farm f ON c.farmID = f.farmID')
         data = cursor.fetchall()
-        
-        
 
-        ## Addding new records
+        # Addding new records
         if request.method == 'POST':
             farmid = request.form.get("cfarm")
             cropid = request.form["crop"]
@@ -224,31 +242,23 @@ def crops():
             price = request.form["price"]
             # Check if crop already exists
             cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-            cursor.execute('SELECT * FROM crop WHERE cropID = %s and name = %s', (cropid,name))
+            cursor.execute(
+                'SELECT * FROM crop WHERE cropID = %s and name = %s', (cropid, name))
             crop = cursor.fetchone()
-            
-            
 
             if crop:
                 msg = "Farm id already exists, try another one"
             else:
                 # Farm ID doesnt exists and the form data is valid, now insert new farm records into farm table
-                cursor.execute('INSERT INTO crop VALUES (%s, %s, %s,%s,%s,%s,%s,%s)', (cropid, variety, name, date_pur, price,farmid,date_plan,date_harv ))
+                cursor.execute('INSERT INTO crop VALUES (%s, %s, %s,%s,%s,%s,%s,%s)', (
+                    cropid, variety, name, date_pur, price, farmid, date_plan, date_harv))
                 mysql.connection.commit()
                 suc = 'You have successfully added the crop'
 
+        return render_template('crop.html', farm=farms, data=data, msg=msg, suc=suc)
 
-        return render_template('crop.html', farm = farms, data=data, msg = msg, suc = suc)
-    
     # User is not loggedin redirect to login page
     return redirect(url_for('login'))
-    
-
-
-@app.route("/expenses")
-def expenses():
-    return render_template("expenses.html")
-
 
 
 @ app.route('/crop-recommend')
@@ -256,8 +266,8 @@ def crop_recommend():
     title = 'Harvestify - Crop Recommendation'
     return render_template('crop_recommender.html', title=title)
 
-@ app.route('/crop-predict', methods=['POST'])
 
+@ app.route('/crop-predict', methods=['POST'])
 def crop_prediction():
     title = 'Harvestify - Crop Recommendation'
 
@@ -287,13 +297,122 @@ def crop_prediction():
 @app.route('/admin/dashboard')
 def dashboard():
     return render_template('dashboard.html')
+
+
 @app.route("/admin/sales")
 def sales():
-    return render_template("sales.html")
+    return render_template("sales/sales.html")
+
+# ----------------------------------------------
+# Records Routes
+# -----------------------------------------------
 
 
+@app.route("/admin/poultry/record")
+def polrecords():
+    return render_template("records/polrecords.html")
 
+
+@app.route("/admin/poultry/record")
+def dairyrecords():
+    return render_template("records/dairyrecords.html")
+
+
+@app.route("/admin/farm/record")
+def farmrecords():
+    return render_template("records/farmrecords.html")
+
+
+@app.route("/admin/crops/records")
+def croprecords():
+    return render_template("records/croprecords.html")
+
+
+# ----------------------------------------------
+# Expenses Routes
+# -----------------------------------------------
+
+@app.route("/admin/expenses")
+def expenses():
+    return render_template("expenses/expenses.html")
+
+
+@app.route("/admin/add/expenses")
+def add_expenses():
+    return render_template("expenses/add_expenses.html")
+
+
+@app.route("/admin/category/expenses")
+def expenses_category():
+    return render_template("expenses/expenses_cat.html")
+
+
+@app.route("/admin/add/category/expenses")
+def expenses_categoryAdd():
+    return render_template("expenses/add_cat.html")
+# ----------------------------------------------
+# Income Routes
+# -----------------------------------------------
+
+
+@app.route("/admin/income")
+def income():
+    return render_template("income/income.html")
+
+
+@app.route("/admin/add/income")
+def add_income():
+    return render_template("income/add_income.html")
+
+
+@app.route("/admin/category/income")
+def income_category():
+    return render_template("income/category.html")
+
+
+@app.route("/admin/add/category/income")
+def income_categoryAdd():
+    return render_template("income/add_cat.html")
+
+# ----------------------------------------------
+# Staff Routes
+# -----------------------------------------------
+
+
+@app.route("/admin/staff")
+def staff():
+    return render_template("staff/staffview.html")
+
+
+@app.route("/admin/add/income")
+def staffadd():
+    return render_template("staff/staffadd.html")
+
+
+@app.route("/admin/category/staff")
+def staffcatview():
+    return render_template("staff/staffcatview.html")
+
+
+@app.route("/admin/add/category/staff")
+def staffcatadd():
+    return render_template("staff/staffcatadd.html")
+
+
+@app.route("/admin/staff/salary")
+def paysalary():
+    return render_template("staff/paysalary.html")
+
+
+@app.route("/admin/staff/paybonus")
+def paybonus():
+    return render_template("staff/paybonus.html")
+
+# ----------------------------------------------
+# Messages Routes
+# -----------------------------------------------
+@app.route("/admin/messages")
+def messages():
+    return render_template("messages/messages.html")
 if __name__ == "__main__":
     app.run(debug=True)
-
-

@@ -1,0 +1,55 @@
+{% extends 'admin.html' %}
+
+
+
+{% block content %}
+<div class="pageheader">
+   <h2><i class="fa fa-th-list"></i>Print Receipt</h2>
+</div>
+<div class="contentpanel">
+<div id="ass" class="col-md-8 col-md-offset-2" style="
+   border-style: solid;
+   border-color: #bbb; background-color: #fff;">
+   <br/>
+   <div style="text-align:center"><img src="img/logo.png" alt="" height="30px"></div>
+   <div class="row">
+      <div class="col-md-12">
+         <h3><u>ID: 20</u></h3>
+         <b style="float:right; margin-top:40px;"> Date: &nbsp; &nbsp; 2022-04-09 </b>
+         <b>NAME: &nbsp; &nbsp; &nbsp; &nbsp; Jinta Susan Mathew</b><br/>
+         <b>ADDRESS: &nbsp; &nbsp; &nbsp; &nbsp; Madayikkal House, KalathuVayal PO, Ambalavayal,Wayanad</b><br/>
+         <b>PHONE: &nbsp; &nbsp; &nbsp; &nbsp; 09656116027</b><br/>
+         <b>Served. By:</b> &nbsp; &nbsp; &nbsp; &nbsp; JUSTIN <br/><br/>
+      </div>
+      <div class="col-md-6"></div>
+   </div>
+   <!-- ROW-->			
+   <div class="table-responsive">
+      <table class="table table-success mb30">
+         <thead>
+            <tr>
+               <th>Description</th>
+               <th>Amount</th>
+               <th>Balance</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td>bnvh</td>
+               <td> 3000.00 </td>
+               <td> 0.00 </td>
+            </tr>
+         </tbody>
+      </table>
+      <div style='margin-left:40%;'><b>Staff Sign</b></div>
+      <br/><br/>
+      <div style='margin-left:40%;'><b>Customer Sign</b></div>
+   </div>
+   <br/><br/><br/><br/>		
+   <br/>
+</div>
+<div class="pull-right">
+   <a href="" onClick="printContent('ass')" class="btn btn-info"><i class="icon-print icon-large"></i> Print</a>
+</div>
+
+{% endblock %}

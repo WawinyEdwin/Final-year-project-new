@@ -1,0 +1,69 @@
+{% extends "admin.html" %}
+{% block content %}
+<div class="contentpanel">
+<div class="pageheader">
+   <h2><i class="fa fa-cog"></i> Manage Office Document</h2>
+</div>
+<div class="contentpanel">
+<div class="panel panel-default">
+<div class="panel-body">
+   <form name="" id="" action="" method="post" enctype="multipart/form-data" >
+      <div class="form-group">
+         <label class="col-sm-3 control-label">Document Title</label>
+         <div class="col-sm-6"><input name="title" value="" class="form-control" /></div>
+         <br/>
+      </div>
+      <div class="form-group">
+         <label class="col-sm-3 control-label">Document Description</label>
+         <div class="col-sm-6"><input name="detail" value="" class="form-control" /></div>
+      </div>
+      <div class="form-group">
+         <label class="col-sm-3 control-label">Document Image</label>
+         <div class="col-sm-6"><input name="bgimg" type="file" id="bgimg" /></div>
+      </div>
+      <div class="col-sm-6 col-sm-offset-3"><br/>
+         <button class="btn btn-primary btn-block" style="width:200px; height: 40px;">UPLOAD</button><br/><br/>
+      </div>
+   </form>
+   <div class="clearfix"></div>
+   <div class="panel panel-default">
+      <div class="panel-body">
+         <div class="clearfix mb30"></div>
+         <div class="table-responsive">
+            <table class="table table-striped" id="table2">
+               <thead>
+                  <tr>
+                     <th>#</th>
+                     <th>Title</th>
+                     <th>Document Description</th>
+                     <th>Action</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>35</td>
+                     <td>AE1234U50</td>
+                     <td>Bus Regisration</td>
+                     <td>
+                        <a href="img/documents/1460627264.jpg" class="btn btn-info btn-xs">View</a>
+                        <a class="btn btn-danger btn-xs" href="deldoc.php?id=35">Delete</a>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>39</td>
+                     <td>Rent</td>
+                     <td>rent for 2016</td>
+                     <td>
+                        <a href="img/documents/1461217268.jpg" class="btn btn-info btn-xs">View</a>
+                        <a class="btn btn-danger btn-xs" href="deldoc.php?id=39">Delete</a>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+         <!-- table-responsive -->
+      </div>
+   </div>
+</div>
+<!-- contentpanel -->
+{% endblock %}

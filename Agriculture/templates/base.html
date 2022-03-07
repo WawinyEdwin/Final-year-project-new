@@ -1,211 +1,353 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Smart Farming for High production</title>
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
 
-  <title>Smart Farming for High production</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+    <!-- Favicons -->
+    <link
+      href="{{url_for('static', filename='assets/img/fav.jpg')}}"
+      rel="icon"
+    />
+    <link
+      href="{{url_for('static', filename='assets/img/apple-touch-icon.png')}}"
+      rel="apple-touch-icon"
+    />
 
-  <!-- Favicons -->
-  <link href="{{url_for('static', filename='assets/img/fav.jpg')}}" rel="icon">
-  <link href="{{url_for('static', filename='assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link
+      href="{{url_for('static',filename='assets/vendor/fontawesome-free/css/all.min.css')}}"
+      rel="stylesheet"
+    />
+    <link
+      href="{{url_for('static',filename='assets/vendor/animate.css/animate.min.css')}}"
+      rel="stylesheet"
+    />
+    <link
+      href="{{url_for('static',filename='assets/vendor/aos/aos.css')}}"
+      rel="stylesheet"
+    />
+    <link
+      href="{{url_for('static',filename='assets/vendor/bootstrap/css/bootstrap.min.css')}}"
+      rel="stylesheet"
+    />
+    <link
+      href="{{url_for('static',filename='assets/vendor/bootstrap-icons/bootstrap-icons.css')}}"
+      rel="stylesheet"
+    />
+    <link
+      href="{{url_for('static',filename='assets/vendor/boxicons/css/boxicons.min.css')}}"
+      rel="stylesheet"
+    />
+    <link
+      href="{{url_for('static',filename='assets/vendor/glightbox/css/glightbox.min.css')}}"
+      rel="stylesheet"
+    />
+    <link
+      href="{{url_for('static',filename='assets/vendor/swiper/swiper-bundle.min.css')}}"
+      rel="stylesheet"
+    />
 
-  <!-- Vendor CSS Files -->
-  <link href="{{url_for('static',filename='assets/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet">
-  <link href="{{url_for('static',filename='assets/vendor/animate.css/animate.min.css')}}" rel="stylesheet">
-  <link href="{{url_for('static',filename='assets/vendor/aos/aos.css')}}" rel="stylesheet">
-  <link href="{{url_for('static',filename='assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-  <link href="{{url_for('static',filename='assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
-  <link href="{{url_for('static',filename='assets/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
-  <link href="{{url_for('static',filename='assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
-  <link href="{{url_for('static',filename='assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+    <!-- Template Main CSS File -->
 
-  <!-- Template Main CSS File -->
-  
-  <link href="{{url_for('static',filename='assets/css/main.css')}}" rel="stylesheet">
+    <link
+      href="{{url_for('static',filename='assets/css/main.css')}}"
+      rel="stylesheet"
+    />
 
-  {% block custom_css %}
+    {% block custom_css %} {% endblock %}
 
-  {% endblock %}
-
-
-  <!-- =======================================================
+    <!-- =======================================================
   * Template Name: Medicio - v4.7.0
   * Template URL: https://bootstrapmade.com/medicio-free-bootstrap-theme/
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-</head>
+  </head>
 
-<body>
-
-  <!-- ======= Top Bar ======= -->
-  <div id="topbar" class="d-flex align-items-center fixed-top">
-    <div class="container d-flex align-items-center justify-content-center justify-content-md-between">
-      <div class="align-items-center d-none d-md-flex">
-        <i class="bi bi-clock"></i> Work in your farm 24-7 by this amazing site
-      </div>
-      <div class="d-flex align-items-center">
-        <i class="bi bi-phone"></i> Help
-      </div>
-    </div>
-  </div>
-
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top">
-    <div class="container d-flex align-items-center">
-
-      <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt=""></a>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <h1 class="logo me-auto"><a href="index.html">Medicio</a></h1> -->
-
-      <nav id="navbar" class="navbar order-last order-lg-0">
-        <ul>
-          <li><a class="nav-link scrollto " href="{{ url_for('home' ) }}">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          
-          <li><a class="nav-link scrollto" href="#doctors">Farmers</a></li>
-          <li class="dropdown"><a href="#"><span>Farming Categories</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">Crop Farming</a></li>
-              <li><a href="#">Poultry Farming</a></li>
-              <li><a href="#">Bee Keeping</a></li>
-              <li><a href="#">Livestock Farming</a></li>
-              <li><a href="#">Mixed Farming</a></li>
-            </ul>
-          </li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          {% if 'loggedin' in session %}
-          <li>
-            <a href="{{ url_for('logout') }}" style="border:0px; width:auto; margin-left: 5px; margin-right: 5px;" class="nav-link scrollto btn btn-outline-warning"><i class="fas fa-sign-out-alt"></i> Logout</a>
-
-          </li>
-          <li>
-            <a href="{{ url_for('profile') }}" class="nav-link scrollto btn btn-outline-primary" style="border:0px; width:auto; margin-left: 5px; margin-right: 5px;"><i class="fas fa-user-circle"></i>Profile</a>
-          </li>
-        {% else %}
-        <li>
-          <a href="{{url_for('login')}}" style="border:0px; width:auto; margin-left: 5px; margin-right: 5px; text-align: center;" class="nav-link scrollto btn btn-outline-warning">Login</a>
-        </li>
-        <li>
-          <a href="{{url_for('register')}}" class="nav-link scrollto btn btn-outline-primary" style="border:0px; width:auto; margin-left: 5px; margin-right: 5px;">Sign Up</a>
-        </li>
-      {% endif %}
-      <li >
-        <a class="nav-link scrollto btn btn-outline-danger" href="{{ url_for('covid' ) }}" style="width:auto; margin-left: 5px; margin-right: 5px; border: 0px;">Covid 19(Healthy Food)</a>
-      </li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-      
-    </div>
-  </header><!-- End Header -->
-
-  
-
-  {% block content %}
-    
-  {% endblock %}
-
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
-    <div class="footer-top">
-      <div class="container">
-        <div class="row">
-
-          <div class="col-lg-3 col-md-6">
-            <div class="footer-info">
-              <h3>Smart Farm</h3>
-              <p>
-                A108 Adam Street <br>
-                NY 535022, KISII<br><br>
-                <strong>Phone:</strong> +2547 1234 56789<br>
-                <strong>Email:</strong> gordon@gmail.com<br>
-              </p>
-              <div class="social-links mt-3">
-                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-2 col-md-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Services</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-4 col-md-6 footer-newsletter">
-            <h4>Our Newsletter</h4>
-            <p>Subscribe with your email to get latest news on agriculture</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
-
-          </div>
-
+  <body>
+    <!-- ======= Top Bar ======= -->
+    <div id="topbar" class="d-flex align-items-center fixed-top">
+      <div
+        class="container d-flex align-items-center justify-content-center justify-content-md-between"
+      >
+        <div class="align-items-center d-none d-md-flex">
+          <i class="bi bi-clock"></i> Work in your farm 24-7 by this amazing
+          site
+        </div>
+        <div class="d-flex align-items-center">
+          <i class="bi bi-phone"></i> Help
         </div>
       </div>
     </div>
 
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>Smart Farmers</span></strong>. All Rights Reserved
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+      <div class="container d-flex align-items-center">
+        <a href="index.html" class="logo me-auto"
+          ><img src="assets/img/logo.png" alt=""
+        /></a>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <h1 class="logo me-auto"><a href="index.html">Medicio</a></h1> -->
+
+        <nav id="navbar" class="navbar order-last order-lg-0">
+          <ul>
+            <li>
+              <a class="nav-link scrollto" href="{{ url_for('home' ) }}"
+                >Home</a
+              >
+            </li>
+            <li><a class="nav-link scrollto" href="#about">About</a></li>
+            <li><a class="nav-link scrollto" href="#services">Services</a></li>
+
+            <li><a class="nav-link scrollto" href="#doctors">Farmers</a></li>
+            <li class="dropdown">
+              <a href="#"
+                ><span>Farming Categories</span>
+                <i class="bi bi-chevron-down"></i
+              ></a>
+              <ul>
+                <li><a href="#">Crop Farming</a></li>
+                <li><a href="#">Poultry Farming</a></li>
+                <li><a href="#">Bee Keeping</a></li>
+                <li><a href="#">Livestock Farming</a></li>
+                <li><a href="#">Mixed Farming</a></li>
+              </ul>
+            </li>
+            <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+            {% if 'loggedin' in session %} 
+            {% if account['role_id'] == 1%}
+            <li>
+              <a
+                href="{{ url_for('logout') }}"
+                style="
+                  border: 0px;
+                  width: auto;
+                  margin-left: 5px;
+                  margin-right: 5px;
+                "
+                class="nav-link scrollto btn btn-outline-warning"
+                ><i class="fas fa-sign-out-alt"></i>{{account['role_id']}} Dashboard</a
+              >
+            </li>
+            {% endif %}
+            
+
+            <li>
+              <a
+                href="{{ url_for('logout') }}"
+                style="
+                  border: 0px;
+                  width: auto;
+                  margin-left: 5px;
+                  margin-right: 5px;
+                "
+                class="nav-link scrollto btn btn-outline-warning"
+                ><i class="fas fa-sign-out-alt"></i> Logout</a
+              >
+            </li>
+            <li>
+              <a
+                href="{{ url_for('profile') }}"
+                class="nav-link scrollto btn btn-outline-primary"
+                style="
+                  border: 0px;
+                  width: auto;
+                  margin-left: 5px;
+                  margin-right: 5px;
+                "
+                ><i class="fas fa-user-circle"></i>Profile</a
+              >
+            </li>
+            {% else %}
+            <li>
+              <a
+                href="{{url_for('login')}}"
+                style="
+                  border: 0px;
+                  width: auto;
+                  margin-left: 5px;
+                  margin-right: 5px;
+                  text-align: center;
+                "
+                class="nav-link scrollto btn btn-outline-warning"
+                >Login</a
+              >
+            </li>
+            <li>
+              <a
+                href="{{url_for('register')}}"
+                class="nav-link scrollto btn btn-outline-primary"
+                style="
+                  border: 0px;
+                  width: auto;
+                  margin-left: 5px;
+                  margin-right: 5px;
+                "
+                >Sign Up</a
+              >
+            </li>
+            {% endif %}
+            <li>
+              <a
+                class="nav-link scrollto btn btn-outline-danger"
+                href="{{ url_for('covid' ) }}"
+                style="
+                  width: auto;
+                  margin-left: 5px;
+                  margin-right: 5px;
+                  border: 0px;
+                "
+                >Covid 19(Healthy Food)</a
+              >
+            </li>
+          </ul>
+          <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+        <!-- .navbar -->
       </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/medicio-free-bootstrap-theme/ -->
-        Designed by <a href="">Gordon Agola</a>
+    </header>
+    <!-- End Header -->
+
+    {% block content %} {% endblock %}
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+      <div class="footer-top">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-3 col-md-6">
+              <div class="footer-info">
+                <h3>Smart Farm</h3>
+                <p>
+                  A108 Adam Street <br />
+                  NY 535022, KISII<br /><br />
+                  <strong>Phone:</strong> +2547 1234 56789<br />
+                  <strong>Email:</strong> gordon@gmail.com<br />
+                </p>
+                <div class="social-links mt-3">
+                  <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                  <a href="#" class="facebook"
+                    ><i class="bx bxl-facebook"></i
+                  ></a>
+                  <a href="#" class="instagram"
+                    ><i class="bx bxl-instagram"></i
+                  ></a>
+                  <a href="#" class="google-plus"
+                    ><i class="bx bxl-skype"></i
+                  ></a>
+                  <a href="#" class="linkedin"
+                    ><i class="bx bxl-linkedin"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-2 col-md-6 footer-links">
+              <h4>Useful Links</h4>
+              <ul>
+                <li>
+                  <i class="bx bx-chevron-right"></i> <a href="#">Home</a>
+                </li>
+                <li>
+                  <i class="bx bx-chevron-right"></i> <a href="#">About us</a>
+                </li>
+                <li>
+                  <i class="bx bx-chevron-right"></i> <a href="#">Services</a>
+                </li>
+                <li>
+                  <i class="bx bx-chevron-right"></i>
+                  <a href="#">Terms of service</a>
+                </li>
+                <li>
+                  <i class="bx bx-chevron-right"></i>
+                  <a href="#">Privacy policy</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-links">
+              <h4>Our Services</h4>
+              <ul>
+                <li>
+                  <i class="bx bx-chevron-right"></i> <a href="#">Web Design</a>
+                </li>
+                <li>
+                  <i class="bx bx-chevron-right"></i>
+                  <a href="#">Web Development</a>
+                </li>
+                <li>
+                  <i class="bx bx-chevron-right"></i>
+                  <a href="#">Product Management</a>
+                </li>
+                <li>
+                  <i class="bx bx-chevron-right"></i> <a href="#">Marketing</a>
+                </li>
+                <li>
+                  <i class="bx bx-chevron-right"></i>
+                  <a href="#">Graphic Design</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="col-lg-4 col-md-6 footer-newsletter">
+              <h4>Our Newsletter</h4>
+              <p>Subscribe with your email to get latest news on agriculture</p>
+              <form action="" method="post">
+                <input type="email" name="email" /><input
+                  type="submit"
+                  value="Subscribe"
+                />
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </footer><!-- End Footer -->
 
-  <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+      <div class="container">
+        <div class="copyright">
+          &copy; Copyright <strong><span>Smart Farmers</span></strong
+          >. All Rights Reserved
+        </div>
+        <div class="credits">
+          <!-- All the links in the footer should remain intact. -->
+          <!-- You can delete the links only if you purchased the pro version. -->
+          <!-- Licensing information: https://bootstrapmade.com/license/ -->
+          <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/medicio-free-bootstrap-theme/ -->
+          Designed by <a href="">Gordon Agola</a>
+        </div>
+      </div>
+    </footer>
+    <!-- End Footer -->
 
-  <!-- Vendor JS Files -->
-  <script src="{{url_for('static',filename='assets/vendor/purecounter/purecounter.js')}}"></script>
-  <script src="{{url_for('static',filename='assets/vendor/aos/aos.js')}}"></script>
-  <script src="{{url_for('static',filename='assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-  <script src="{{url_for('static',filename='assets/vendor/glightbox/js/glightbox.min.js')}}"></script>
-  <script src="{{url_for('static',filename='assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
-  <script src="{{url_for('static',filename='assets/vendor/php-email-form/validate.js')}}"></script>
+    <div id="preloader"></div>
+    <a
+      href="#"
+      class="back-to-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
 
-  <!-- Template Main JS File -->
-  <script src="{{url_for('static',filename='assets/js/main.js')}}"></script>
+    <!-- Vendor JS Files -->
+    <script src="{{url_for('static',filename='assets/vendor/purecounter/purecounter.js')}}"></script>
+    <script src="{{url_for('static',filename='assets/vendor/aos/aos.js')}}"></script>
+    <script src="{{url_for('static',filename='assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{url_for('static',filename='assets/vendor/glightbox/js/glightbox.min.js')}}"></script>
+    <script src="{{url_for('static',filename='assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
+    <script src="{{url_for('static',filename='assets/vendor/php-email-form/validate.js')}}"></script>
 
-  {% block script %}
-    
-  {% endblock %}
+    <!-- Template Main JS File -->
+    <script src="{{url_for('static',filename='assets/js/main.js')}}"></script>
 
-</body>
-
+    {% block script %} {% endblock %}
+  </body>
 </html>

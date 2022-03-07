@@ -1,0 +1,29 @@
+{% extends 'admin.html' %}
+
+
+{% block content %}
+
+<div class="pageheader">
+   <h2><i class="fa fa-th-list"></i> Add New Expense Category</h2>
+</div>
+<div class="contentpanel">
+   <div class="panel panel-default">
+      <div class="panel-body">
+         <form action="" method="post">
+            <div class="form-group">
+               <label class="col-sm-3 control-label">Name</label>
+               <div class="col-sm-6"><input name="title" value="" class="form-control" type="text"></div>
+            </div>
+            <div class="col-sm-6 col-sm-offset-3"><br/><br/><br/>
+               <input type="submit" class="btn btn-lg btn-success btn-block" value="Submit">
+            </div>
+         </form>
+      </div>
+   </div>
+</div>
+<!-- contentpanel -->
+<!-- /#page-wrapper -->
+
+<!-- /#wrapper -->
+    
+{% endblock %}

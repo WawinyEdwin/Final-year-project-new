@@ -1,0 +1,76 @@
+{% extends "admin.html" %}
+{% block content %}
+<div class="pageheader">
+   <h2><i class="fa fa-th-list"></i> Staff Designations</h2>
+</div>
+<div class="contentpanel">
+   <div class="panel panel-default">
+      <div class="panel-body">
+         <div class="clearfix mb30"></div>
+         <div class="table-responsive">
+            <table class="table table-striped" id="table2">
+               <thead>
+                  <tr>
+                     <th>#</th>
+                     <th>Name</th>
+                     <th>ACTION</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>1</td>
+                     <td>Tailor</td>
+                     <td>
+                        <a href="staffcatedit.php?id=1" class="btn btn-info btn-xs">Edit</a>
+                        <a href="staffcatdelete.php?id=1" class="btn btn-danger btn-xs">DELETE</a>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>2</td>
+                     <td>Counter</td>
+                     <td>
+                        <a href="staffcatedit.php?id=2" class="btn btn-info btn-xs">Edit</a>
+                        <a href="staffcatdelete.php?id=2" class="btn btn-danger btn-xs">DELETE</a>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>3</td>
+                     <td>Security</td>
+                     <td>
+                        <a href="staffcatedit.php?id=3" class="btn btn-info btn-xs">Edit</a>
+                        <a href="staffcatdelete.php?id=3" class="btn btn-danger btn-xs">DELETE</a>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>4</td>
+                     <td>Manager</td>
+                     <td>
+                        <a href="staffcatedit.php?id=4" class="btn btn-info btn-xs">Edit</a>
+                        <a href="staffcatdelete.php?id=4" class="btn btn-danger btn-xs">DELETE</a>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>5</td>
+                     <td>Support</td>
+                     <td>
+                        <a href="staffcatedit.php?id=5" class="btn btn-info btn-xs">Edit</a>
+                        <a href="staffcatdelete.php?id=5" class="btn btn-danger btn-xs">DELETE</a>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>6</td>
+                     <td>Farm manager</td>
+                     <td>
+                        <a href="staffcatedit.php?id=6" class="btn btn-info btn-xs">Edit</a>
+                        <a href="staffcatdelete.php?id=6" class="btn btn-danger btn-xs">DELETE</a>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+         <!-- table-responsive -->
+      </div>
+   </div>
+</div>
+<!-- contentpanel -->
+{% endblock %}

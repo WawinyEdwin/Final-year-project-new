@@ -1,0 +1,55 @@
+{% extends 'admin.html' %}
+
+
+{% block content %}
+
+<form action="orderadd.php" method="post">
+   <div class="form-group">
+      <label>Select Customer</label>
+      <select name="customer" class="form-control">
+         <option value="0">Please Select a Customer</option>
+         <option value="12">Jinta Susan Mathew</option>
+      </select>
+      <br/>
+   </div>
+   <div class="form-group">
+      <label>Description</label><br/>
+      <input type="text" name="desc" style="width:200px; height: 40px;" /><br/><br/>
+   </div>
+   <div class="form-group">
+      <label>Date Received</label><br/>
+      <input type="date" name="date_received" style="width:200px; height: 40px;" /><br/><br/>
+   </div>
+   <div class="form-group">
+   <label>Received By</label>
+   <select name="received_by" class="form-control">
+      <option value="1">Osakpamwan Andrew</option>
+      <option value="2">Sophia Meaadows</option>
+      <option value="3">Austin Ihaeme</option>
+      <option value="4">simeon kawoh</option>
+      <option value="5">MUSANGO WILLY</option>
+      <option value="6">JUSTIN </option>
+      <option value="7">John</option>
+      <option value="8">lokendra poudel</option>
+      <option value="9">John Peter</option>
+      <option value="10">test</option>
+   </select>
+   <br/>    
+   <div class="form-group">
+      <label>Amount</label><br/>
+      KSH <input type="text" name="amount" style="width:200px; height: 40px;" /><br/><br/>
+   </div>
+   <div class="form-group">
+      <label>Paid</label><br/>
+      KSH <input type="text" name="paid" style="width:200px; height: 40px;" /><br/><br/>
+   </div>
+   <div class="form-group">
+      <label>Balance</label><br/>
+      KSH <input type="text" name="balance" style="width:200px; height: 40px;" /><br/><br/>
+   </div>
+   <input type="submit" class="btn btn-lg btn-success btn-block" value="ADD">
+</form>
+                    
+
+
+{% endblock %}

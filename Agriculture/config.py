@@ -1,5 +1,13 @@
 weather_api_key = "cbb7d92c294d51618c73edfd89f119cd"
 
+
+
+def user():
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute(
+            'SELECT * FROM user WHERE id = %s', (session['id'],))
+        account = cursor.fetchone()
+
 # import requests
 
 # def weather_fetch(city_name):

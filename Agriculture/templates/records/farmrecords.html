@@ -1,0 +1,203 @@
+{% extends 'admin.html'  %}
+{% block content%}
+<style>
+   .tab {
+   overflow: hidden;
+   border: 1px solid #ccc;
+   background-color: #f1f1f1;
+   width:100%;
+   }
+   /* Style the buttons inside the tab */
+   .tab button {
+   background-color: inherit;
+   float: left;
+   border: none;
+   outline: none;
+   cursor: pointer;
+   padding: 14px 16px;
+   transition: 0.3s;
+   font-size: 17px;
+   }
+   /* Change background color of buttons on hover */
+   .tab button:hover {
+   background-color: #ddd;
+   }
+   /* Create an active/current tablink class */
+   .tab button.active {
+   background-color: #ccc;
+   }
+   /* Style the tab content */
+   .tabcontent {
+   display: none;
+   padding: 6px 12px;
+   border: 1px solid #ccc;
+   border-top: none;
+   }
+</style>
+</head>
+<body>
+   <div class="tab" style="display:flex; justify-content:space-evenly;">
+      <button class="tablinks" onclick="openCity(event, 'info')">Crop Info</button>
+      <button class="tablinks" onclick="openCity(event, 'Egg')">Soil Test Summary</button>
+      <button class="tablinks" onclick="openCity(event, 'Hatchery')">Nutrients Planning</button>
+      <button class="tablinks" onclick="openCity(event, 'Vaccination')">Nutrients Applications</button>
+      <button class="tablinks" onclick="openCity(event, 'Vaccination')">Pesticide-use Records</button>
+   </div>
+   <div id="info" class="tabcontent">
+      <div class="table-responsive">
+         <table class="table table-striped" id="table2">
+            <thead>
+               <tr>
+                  <th>#</th>
+                  <th>Year</th>
+                  <th>Crop</th>
+                  <th>Variety</th>
+                  <th>Yield Goal</th>
+                  <th>Actual Goal</th>
+                  <th>Planting Date</th>
+                  <th>Pop. Planted</th>
+                  <th>Actual Pop.</th>
+                  <th>Planter Settings</th>
+                  <th>Tillage Practices and Date</th>
+                  <th>Harvest Date</th>
+                  <th>Action</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td>9</td>
+                  <td>Broilers</td>
+                  <td>1000</td>
+                  <td>2022-02-21</td>
+                  <td>No</td>
+                  <td>Yes</td>
+                  <td>9</td>
+                  <td>9</td>
+                  <td>Broilers</td>
+                  <td>1000</td>
+                  <td>2022-02-21</td>
+                  <td>No</td>
+                  <td>
+                     <a href="batch_flockedit.php?id=9" class="btn btn-info btn-xs">Edit</a>
+                     <a href="batch_flockview.php?id=9"><button type="button" class="btn btn-danger btn-xs">DELETE</button></a>
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      <!-- table-responsive -->
+   </div>
+   <div id="Vaccination" class="tabcontent">
+      <div class="table-responsive">
+         <table class="table table-striped" id="table2">
+            <thead>
+               <tr>
+                  <th>#</th>
+                  <th>Batch Flock</th>
+                  <th>Vaccine</th>
+                  <th>Name</th>
+                  <th>Staff</th>
+                  <th>Date</th>
+                  <th>reaction</th>
+                  <th>others</th>
+                  <th>Action</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td>3</td>
+                  <td>Layers 2</td>
+                  <td>Newcastle Disease</td>
+                  <td>ND Killed</td>
+                  <td>Osakpamwan Andrew</td>
+                  <td>2022-05-04</td>
+                  <td>ok</td>
+                  <td>ok</td>
+                  <td>
+                     <a href="vaccination_medication_programedit.php?id=3" class="btn btn-info btn-xs">Update</a>
+                     <a href="vaccination_medication_programlist.php?id=3"><button type="button" class="btn btn-danger btn-xs">DELETE</button></a>
+                  </td>
+               </tr>
+               <tr>
+                  <td>2</td>
+                  <td>Layers 2</td>
+                  <td>Newcastle Disease</td>
+                  <td>Mero Naam</td>
+                  <td>MUSANGO WILLY</td>
+                  <td>2019-09-23</td>
+                  <td>None</td>
+                  <td>Not available</td>
+                  <td>
+                     <a href="vaccination_medication_programedit.php?id=2" class="btn btn-info btn-xs">Update</a>
+                     <a href="vaccination_medication_programlist.php?id=2"><button type="button" class="btn btn-danger btn-xs">DELETE</button></a>
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      <!-- table-responsive -->
+   </div>
+   <div id="Egg" class="tabcontent">
+      <div class="table-responsive">
+         <table class="table table-striped" id="table2">
+            <thead>
+               <tr>
+                  <th>Egg Production #</th>
+                  <th>Batch Flock ID</th>
+                  <th>Total</th>
+                  <th>Craked</th>
+                  <th>Double Yolk</th>
+                  <th>Dirty</th>
+                  <th>Others</th>
+                  <th>Staff</th>
+                  <th>Date</th>
+                  <th>Action</th>
+               </tr>
+            </thead>
+            <tbody>
+            </tbody>
+         </table>
+      </div>
+      <!-- table-responsive --> 
+   </div>
+   <div id="Hatchery" class="tabcontent">
+      <div class="table-responsive">
+         <table class="table table-striped" id="table2">
+            <thead>
+               <tr>
+                  <th>Hatchery #</th>
+                  <th>Batch Flock</th>
+                  <th>Name</th>
+                  <th>Received</th>
+                  <th>Staff</th>
+                  <th>Integerroduction Date</th>
+                  <th>Total</th>
+                  <th>Hatched</th>
+                  <th>Survived</th>
+                  <th>Action</th>
+               </tr>
+            </thead>
+            <tbody>
+            </tbody>
+         </table>
+      </div>
+      <!-- table-responsive -->
+   </div>
+   {% block records %}
+   {% endblock %}
+   <script>
+      function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+      }
+   </script>
+   {% endblock %}
